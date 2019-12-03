@@ -1,3 +1,4 @@
+const PORT = process.env.PORT || 3000
 let express = require('express');
 let app = express();
 let personRoute = require('./routes/person');
@@ -37,5 +38,5 @@ app.use((err, req, res, next) => {
     res.sendFile(path.join(__dirname, '../public/500.html'))
 })
 
-const PORT = process.env.PORT || 3000
+
 app.listen(PORT, () => console.info(`Server has started on ${PORT}`));
