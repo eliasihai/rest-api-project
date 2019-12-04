@@ -20,20 +20,37 @@ router.get('/student/login12345', async(req, res) => {
     }
 });
 
+// login a admin user
 router.post('/student/login', (req, res) => {
-    const { email, password } = req.body
+        const { email, password } = req.body
 
-    if (email === email && password === password) {
-        res.json({
-            status: 'ok'
-        })
-    } else {
-        res.json({
-            status: 'error'
-        })
-    }
+        if (email === 'admin' && password === 'admin') {
+            res.json({
+                status: 'ok'
+            })
+        } else {
+            res.json({
+                status: 'error'
+            })
+        }
+    })
+    // Login a student
+router.post('/student/login1', function(req, res) {
+    var email = req.body.email;
+    var password = req.body.password;
+
+    StudentModel.findOne({ email: email, password: password }, function(err, student) {
+        if (err) {
+            console.log(err);
+            return res.status(500).send();
+        }
+        if (!student) {
+            return res.status(404).send();
+        } else res.status(200).send();
+    })
 })
 
+// Register a student
 router.post('/student/register', (req, res) => {
     const student = new StudentModel({
         name: req.body.name,
