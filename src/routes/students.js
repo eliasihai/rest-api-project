@@ -22,19 +22,19 @@ router.get('/student/login12345', async(req, res) => {
 
 // login a admin user
 router.post('/student/login', (req, res) => {
-        const { email, password } = req.body
+    const { email, password } = req.body
 
-        if (email === 'admin' && password === 'admin') {
-            res.json({
-                status: 'ok'
-            })
-        } else {
-            res.json({
-                status: 'error'
-            })
-        }
-    })
-    // Login a student
+    if (email === 'admin' && password === 'admin') {
+        res.json({
+            status: 'ok'
+        })
+    } else {
+        res.json({
+            status: 'error'
+        })
+    }
+});
+// Login a student
 router.post('/student/login1', function(req, res) {
     var email = req.body.email;
     var password = req.body.password;
@@ -45,8 +45,16 @@ router.post('/student/login1', function(req, res) {
             return res.status(500).send();
         }
         if (!student) {
+            res.json({
+                status: 'error'
+            })
             return res.status(404).send();
-        } else res.status(200).send();
+        } else {
+            res.json({
+                status: 'ok'
+            })
+            res.status(200).send();
+        }
     })
 })
 
