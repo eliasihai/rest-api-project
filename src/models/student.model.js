@@ -9,12 +9,12 @@ require('dotenv/config');
 // );
 
 let StudentSchema = new mongoose.Schema({
-    name: {
+    firstname: {
         type: String,
         required: true,
         unique: false
     },
-    last_name: {
+    lastname: {
         type: String,
         required: true,
         unique: false

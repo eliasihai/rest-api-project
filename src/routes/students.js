@@ -61,12 +61,10 @@ router.post('/student/login1', function(req, res) {
 // Register a student
 router.post('/student/register', (req, res) => {
     const student = new StudentModel({
-        name: req.body.name,
-        last_name: req.body.last_name,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
         password: req.body.password,
         email: req.body.email,
-        date_of_birth: req.body.date_of_birth,
-        gender: req.body.gender
     });
 
     student.save()
@@ -81,8 +79,8 @@ router.post('/student/register', (req, res) => {
 router.post('/student/register1', async(req, res) => {
 
     const student = new StudentModel({
-        name: req.body.name,
-        last_name: req.body.last_name,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
         password: req.body.password,
         email: req.body.email,
         //date_of_birth: req.body.date_of_birth,
