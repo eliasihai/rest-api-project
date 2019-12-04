@@ -29,14 +29,14 @@ let StudentSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    date_of_birth: {
+    /*date_of_birth: {
         type: Date,
         unique: false
     },
     gender: {
         type: String,
         unique: false
-    }
+    }*/
 })
 
 const Student = module.exports = mongoose.model('Student', StudentSchema)
