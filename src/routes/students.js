@@ -69,10 +69,16 @@ router.post('/student/register', (req, res) => {
 
     student.save()
         .then(data => {
-            res.json(data)
+            res.json({
+                data,
+                status: 'ok'
+            })
         })
         .catch(err => {
-            res.json({ message: err });
+            res.json({
+                message: err,
+                status: 'error'
+            });
         })
 })
 
