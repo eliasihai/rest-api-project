@@ -23,7 +23,7 @@ router.get('/student/login12345', async(req, res) => {
 router.post('/student/login', (req, res) => {
     const { email, password } = req.body
 
-    if (email === 'admin' && password === 'admin') {
+    if (email === email && password === password) {
         res.json({
             status: 'ok'
         })
