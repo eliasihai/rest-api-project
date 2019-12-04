@@ -34,7 +34,7 @@ router.post('/student/login', (req, res) => {
     }
 })
 
-router.post('student/register', (req, res) => {
+router.post('/student/register', (req, res) => {
     const student = new StudentModel({
         name: req.body.name,
         last_name: req.body.last_name,
@@ -47,13 +47,29 @@ router.post('student/register', (req, res) => {
     student.save()
         .then(data => {
             res.json(data)
-        }).catch(err => {
+        })
+        .catch(err => {
             res.json({ message: err });
         })
 })
 
+router.post('/student/register1', async(req, res) => {
 
-
+    const student = new StudentModel({
+        name: req.body.name,
+        last_name: req.body.last_name,
+        password: req.body.password,
+        email: req.body.email,
+        date_of_birth: req.body.date_of_birth,
+        gender: req.body.gender
+    });
+    try {
+        const savedStudent = await student.save();
+        res.json(savedStudent);
+    } catch (err) {
+        res.json({ message: err });
+    }
+});
 
 
 
