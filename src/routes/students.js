@@ -21,54 +21,54 @@ router.get('/student/login1', async(req, res) => {
 });
 
 router.post('/student/login', (req, res) => {
-        const { email, password } = req.body
+    const { email, password } = req.body
 
-        if (email === 'admin' && password === 'admin') {
-            res.json({
-                status: 'ok'
-            })
-        } else {
-            res.json({
-                status: 'error'
-            })
-        }
-    })
-    /*
-    router.post('/student/login1', function(req, res) {
-        //var email = req.body.email;
-        //var password = req.body.password;
-
-        const student = new StudentModel({
-            email: req.body.email,
-            password: req.body.password
-        });
-
-        StudentModel.findOne({ email: email, password: password }, function(err, student) {
-            if (err) {
-                console.log(err);
-                return res.status(500).send();
-            }
-            if (!student) {
-                return res.status(404).send();
-            }
-            return res.status(200).send();
+    if (email === 'admin' && password === 'admin') {
+        res.json({
+            status: 'ok'
         })
+    } else {
+        res.json({
+            status: 'error'
+        })
+    }
+})
+
+router.post('/student/login12', function(req, res) {
+    //var email = req.body.email;
+    //var password = req.body.password;
+
+    const student = new StudentModel({
+        email: req.body.email,
+        password: req.body.password
     });
 
-
-    router.get('/student/login', async(req, res) => {
-        const student = new StudentModel({
-            email: req.body.email,
-            password: req.body.password
-        });
-        try {
-            const savedStudent = await student.find();
-            res.json(savedStudent);
-        } catch (err) {
-            res.json({ message: err });
+    StudentModel.findOne({ email: email, password: password }, function(err, student) {
+        if (err) {
+            console.log(err);
+            return res.status(500).send();
         }
+        if (!student) {
+            return res.status(404).send();
+        }
+        return res.status(200).send();
+    })
+});
+
+
+router.get('/student/login', async(req, res) => {
+    const student = new StudentModel({
+        email: req.body.email,
+        password: req.body.password
     });
-    */
+    try {
+        const savedStudent = await student.find();
+        res.json(savedStudent);
+    } catch (err) {
+        res.json({ message: err });
+    }
+}); *
+/
 
 
 
