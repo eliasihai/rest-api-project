@@ -10,7 +10,7 @@ mongoose.connect(
 );
 
 // Gets back all the students
-router.get('/student', async(req, res) => {
+router.get('/student/login1', async(req, res) => {
     try {
         const student = await StudentModel.find();
 
