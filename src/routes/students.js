@@ -10,7 +10,7 @@ mongoose.connect(
 );
 
 // Gets back all the students
-router.get('/student/login1', async(req, res) => {
+router.get('/student/login12345', async(req, res) => {
     try {
         const student = await StudentModel.find();
 
@@ -34,6 +34,13 @@ router.post('/student/login', (req, res) => {
     }
 })
 
+
+
+
+
+
+
+/*
 router.post('/student/login12', function(req, res) {
     //var email = req.body.email;
     //var password = req.body.password;
@@ -67,9 +74,7 @@ router.get('/student/login', async(req, res) => {
     } catch (err) {
         res.json({ message: err });
     }
-}); *
-/
-
+});
 
 
 // Create a new student
@@ -157,5 +162,5 @@ router.patch('/student/:studentId', async(req, res) => {
         res.json({ messge: err });
     }
 });
-
+*/
 module.exports = router;
