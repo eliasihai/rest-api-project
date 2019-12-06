@@ -53,10 +53,8 @@ router.post('/student/login1', function(req, res) {
             res.json({
                 status: 'ok',
                 data: {
-                    firstname: firstname,
-                    lastname: lastname,
-                    password: password,
-                    email: email
+                    firstname: 'firstname',
+                    lastname: 'lastname',
                 }
             })
             res.status(200).send();
