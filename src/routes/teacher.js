@@ -76,7 +76,7 @@ router.post('/teacher/register', (req, res) => {
 router.post('/teacher/register1', async(req, res) => {
 
     const teacher = new TeacherModel({
-        name: req.body.name,
+        firstname: req.body.firstname,
         lastname: req.body.lastname,
         password: req.body.password,
         email: req.body.email,

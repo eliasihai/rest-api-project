@@ -9,7 +9,7 @@ require('dotenv/config');
 // );
 
 let TeacherSchema = new mongoose.Schema({
-    firstame: {
+    firstname: {
         type: String,
         required: true,
         unique: false
