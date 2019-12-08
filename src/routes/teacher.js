@@ -20,63 +20,114 @@ router.get('/teacher', async(req, res) => {
     }
 });
 
-// Create a new teacher
-// POST localhost:3000/teacher
-router.post('/teacher', async(req, res) => {
 
-    const teacher = new TeacherModel({
-        name: req.body.name,
-        last_name: req.body.last_name,
-        password: req.body.password,
-        email: req.body.email,
-        date_of_birth: req.body.date_of_birth,
-        gender: req.body.gender
+// Login a teacher
+router.post('/teacher/login', function(req, res) {
+    var email = req.body.email;
+    var password = req.body.password;
+
+    TeacherModel.findOne({ email: email, password: password }, function(err, teacher) {
+        if (err) {
+            console.log(err);
+            return res.status(500).send();
+        }
+        if (!student) {
+            res.json({
+                status: 'error - teacher not found'
+            })
+            return res.status(404).send();
+        } else {
+            res.json({
+                status: 'ok',
+                data: student
+            })
+            res.status(200).send();
+        }
+    })
+})
+
+// Register a teacher
+router.post('/teacher/register', (req, res) => {
+        const student = new TeacherModel({
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            password: req.body.password,
+            email: req.body.email,
+        });
+
+        student.save()
+            .then(data => {
+                res.json({
+                    data,
+                    status: 'ok'
+                })
+            })
+            .catch(err => {
+                res.json({
+                    message: err,
+                    status: 'error'
+                });
+            })
+    })
+    /*
+
+    // Create a new teacher
+    // POST localhost:3000/teacher
+    router.post('/teacher', async(req, res) => {
+
+        const teacher = new TeacherModel({
+            name: req.body.name,
+            last_name: req.body.last_name,
+            password: req.body.password,
+            email: req.body.email,
+            date_of_birth: req.body.date_of_birth,
+            gender: req.body.gender
+        });
+        try {
+            const savedTeacher = await teacher.save();
+            res.json(savedTeacher);
+        } catch (err) {
+            res.json({ message: err });
+        }
     });
-    try {
-        const savedTeacher = await teacher.save();
-        res.json(savedTeacher);
-    } catch (err) {
-        res.json({ message: err });
-    }
-});
 
-// Specific teacher
-router.get('/teacher/:teacherId', async(req, res) => {
-    try {
-        const teacher = await TeacherModel.findById(req.params.teacherId);
-        res.json(teacher);
-    } catch (err) {
-        res.json({ message: eerr })
-    }
-});
+    // Specific teacher
+    router.get('/teacher/:teacherId', async(req, res) => {
+        try {
+            const teacher = await TeacherModel.findById(req.params.teacherId);
+            res.json(teacher);
+        } catch (err) {
+            res.json({ message: eerr })
+        }
+    });
 
-// Delete teacher
-router.delete('/teacher/:teacherId', async(req, res) => {
-    try {
-        const removeTeacher = await TeacherModel.remove({ _id: req.params.teacherId });
-        res.json(removeTeacher)
-    } catch (err) {
-        res.json({ message: err });
-    }
-});
+    // Delete teacher
+    router.delete('/teacher/:teacherId', async(req, res) => {
+        try {
+            const removeTeacher = await TeacherModel.remove({ _id: req.params.teacherId });
+            res.json(removeTeacher)
+        } catch (err) {
+            res.json({ message: err });
+        }
+    });
 
-// Update a teacher
-router.patch('/teacher/:teacherId', async(req, res) => {
-    let tchr = {};
-    if (tchr !== null) {
-        tchr.name = req.body.name,
-            tchr.last_name = req.body.last_name,
-            tchr.password = req.body.password,
-            tchr.date_of_birth = req.body.date_of_birth,
-            tchr.gender = req.body.gender
-    }
-    let query = { _id: req.params.teacherId }
-    try {
-        const updateTeacher = await TeacherModel.update(query, tchr);
-        res.json(updateTeacher);
-    } catch (err) {
-        res.json({ messge: err });
-    }
-});
-
+    // Update a teacher
+    router.patch('/teacher/:teacherId', async(req, res) => {
+        let tchr = {};
+        if (tchr !== null) {
+            tchr.name = req.body.name,
+                tchr.last_name = req.body.last_name,
+                tchr.password = req.body.password,
+                tchr.date_of_birth = req.body.date_of_birth,
+                tchr.gender = req.body.gender
+        }
+        let query = { _id: req.params.teacherId }
+        try {
+            const updateTeacher = await TeacherModel.update(query, tchr);
+            res.json(updateTeacher);
+        } catch (err) {
+            res.json({ messge: err });
+        }
+    });
+    */
 module.exports = router

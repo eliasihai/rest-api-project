@@ -12,25 +12,23 @@ let TeacherSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        unique:false
+        unique: false
     },
     last_name: {
         type: String,
         required: true,
-        unique:false
+        unique: false
     },
     password: {
         type: String,
         required: true,
-        unique:false
+        unique: false
     },
     email: {
         type: String,
         required: true,
         unique: true
-    },
-    date_of_birth: {type:Date,unique:false},
-    gender: {type:String,unique:false}
+    }
 })
 
 const Teacher = module.exports = mongoose.model('Teacher', TeacherSchema)
