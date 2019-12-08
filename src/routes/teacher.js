@@ -31,7 +31,7 @@ router.post('/teacher/login', function(req, res) {
             console.log(err);
             return res.status(500).send();
         }
-        if (!student) {
+        if (!teacher) {
             res.json({
                 status: 'error - teacher not found'
             })
@@ -39,7 +39,7 @@ router.post('/teacher/login', function(req, res) {
         } else {
             res.json({
                 status: 'ok',
-                data: student
+                data: teacher
             })
             res.status(200).send();
         }
@@ -48,14 +48,14 @@ router.post('/teacher/login', function(req, res) {
 
 // Register a teacher
 router.post('/teacher/register', (req, res) => {
-        const student = new TeacherModel({
+        const teacher = new TeacherModel({
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             password: req.body.password,
             email: req.body.email,
         });
 
-        student.save()
+        teacher.save()
             .then(data => {
                 res.json({
                     data,
