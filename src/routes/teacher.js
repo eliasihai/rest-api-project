@@ -48,49 +48,47 @@ router.post('/teacher/login', function(req, res) {
 
 // Register a teacher
 router.post('/teacher/register', (req, res) => {
-        const teacher = new TeacherModel({
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            password: req.body.password,
-            email: req.body.email,
-        });
-
-        teacher.save()
-            .then(data => {
-                res.json({
-                    data,
-                    status: 'ok'
-                })
-            })
-            .catch(err => {
-                res.json({
-                    message: err,
-                    status: 'error'
-                });
-            })
-    })
-    /*
-
-    // Create a new teacher
-    // POST localhost:3000/teacher
-    router.post('/teacher', async(req, res) => {
-
-        const teacher = new TeacherModel({
-            name: req.body.name,
-            last_name: req.body.last_name,
-            password: req.body.password,
-            email: req.body.email,
-            date_of_birth: req.body.date_of_birth,
-            gender: req.body.gender
-        });
-        try {
-            const savedTeacher = await teacher.save();
-            res.json(savedTeacher);
-        } catch (err) {
-            res.json({ message: err });
-        }
+    const teacher = new TeacherModel({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        password: req.body.password,
+        email: req.body.email,
     });
 
+    teacher.save()
+        .then(data => {
+            res.json({
+                data,
+                status: 'ok'
+            })
+        })
+        .catch(err => {
+            res.json({
+                message: err,
+                status: 'error'
+            });
+        })
+})
+
+
+// Create a new teacher
+// POST localhost:3000/teacher
+router.post('/teacher/register1', async(req, res) => {
+
+    const teacher = new TeacherModel({
+        name: req.body.name,
+        lastname: req.body.lastname,
+        password: req.body.password,
+        email: req.body.email,
+    });
+    try {
+        const savedTeacher = await teacher.save();
+        res.json(savedTeacher);
+    } catch (err) {
+        res.json({ message: err });
+    }
+});
+/*
     // Specific teacher
     router.get('/teacher/:teacherId', async(req, res) => {
         try {
