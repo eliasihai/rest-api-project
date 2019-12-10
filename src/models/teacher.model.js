@@ -28,7 +28,13 @@ let TeacherSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
+    },
+    subject: {
+        type: String,
+        required: true,
+        unique: false
     }
+
 })
 
 const Teacher = module.exports = mongoose.model('Teacher', TeacherSchema)

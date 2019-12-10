@@ -53,6 +53,7 @@ router.post('/teacher/register', (req, res) => {
         lastname: req.body.lastname,
         password: req.body.password,
         email: req.body.email,
+        subject: req.body.subject,
     });
 
     teacher.save()
