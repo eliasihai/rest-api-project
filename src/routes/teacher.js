@@ -94,7 +94,7 @@ router.post('/teacher/register1', async(req, res) => {
 router.get('/teacher/listview', function(req, res) {
     var subject = req.body.subject;
 
-    TeacherModel.findOne({ subject: subject }, function(err, teacher) {
+    TeacherModel.find({ subject: subject }, function(err, teacher) {
         if (err) {
             console.log(err);
             return res.status(500).send();
@@ -117,7 +117,7 @@ router.get('/teacher/listview', function(req, res) {
 // Gets back all the teachers by subject
 router.get('/teacher/subject', async(req, res) => {
     try {
-        const teacher = await TeacherModel.findById(req.params.subject);
+        const teacher = await TeacherModel.find(req.params.subject);
 
         res.json({
             status: 'ok',
