@@ -113,6 +113,20 @@ router.get('/teacher/listview', function(req, res) {
         }
     })
 });
+
+// Gets back all the teachers by subject
+router.get('/teacher/subject', async(req, res) => {
+    try {
+        const teacher = await TeacherModel.findById(req.params.subject);
+
+        res.json({
+            status: 'ok',
+            data: teacher
+        })
+    } catch (err) {
+        res.json({ message: err })
+    }
+});
 /*
     // Specific teacher
     router.get('/teacher/:teacherId', async(req, res) => {
