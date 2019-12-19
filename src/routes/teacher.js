@@ -88,30 +88,30 @@ router.post('/teacher/register1', async(req, res) => {
     } catch (err) {
         res.json({ message: err });
     }
-});
+})
 
 // listview 
 router.get('/teacher/listview', function(req, res) {
-    var subject = req.body.subject,
+    var subject = req.body.subject;
 
-        TeacherModel.findOne({ subject: subject }, function(err, teacher) {
-            if (err) {
-                console.log(err);
-                return res.status(500).send();
-            }
-            if (!teacher) {
-                res.json({
-                    status: 'error - teacher not found'
-                })
-                return res.status(404).send();
-            } else {
-                res.json({
-                    status: 'ok',
-                    data: teacher
-                })
-                res.status(200).send();
-            }
-        })
+    TeacherModel.findOne({ subject: subject }, function(err, teacher) {
+        if (err) {
+            console.log(err);
+            return res.status(500).send();
+        }
+        if (!teacher) {
+            res.json({
+                status: 'error - teacher not found'
+            })
+            return res.status(404).send();
+        } else {
+            res.json({
+                status: 'ok',
+                data: teacher
+            })
+            res.status(200).send();
+        }
+    })
 });
 /*
     // Specific teacher
