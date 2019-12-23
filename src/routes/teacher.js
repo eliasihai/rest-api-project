@@ -138,7 +138,7 @@ router.post('/teacher/subject', function(req, res) {
 });
 
 // Gets back all the teachers by subject
-router.get('/teacher/listview', async(req, res) => {
+router.get('/teacher/list', async(req, res) => {
     try {
         const teacher = await TeacherModel.find(req.params.subject);
 
