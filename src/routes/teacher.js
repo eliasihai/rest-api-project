@@ -140,7 +140,7 @@ router.post('/teacher/subject', function(req, res) {
 // Gets back all the teachers by subject
 router.get('/teacher/AllTeachers', async(req, res) => {
     try {
-        const teacher = await TeacherModel.find(req.params.subject);
+        const teacher = await TeacherModel.find();
 
         res.json({
             status: 'ok',
