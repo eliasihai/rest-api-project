@@ -117,7 +117,7 @@ router.get('/teacher/listview', function(req, res) {
 router.post('/teacher/subject', function(req, res) {
     var subject = req.body.subject;
 
-    TeacherModel.findOne({ subject: subject }, function(err, teacher) {
+    TeacherModel.find({ subject: subject }, function(err, teacher) {
         if (err) {
             console.log(err);
             return res.status(500).send();
