@@ -114,7 +114,7 @@ router.get('/teacher/listview', function(req, res) {
     })
 });
 
-router.post('/teacher/subject', function(req, res) {
+router.get('/teacher/subject', function(req, res) {
     var subject = req.body.subject;
 
     TeacherModel.find({ subject: subject }, function(err, teacher) {
