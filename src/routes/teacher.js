@@ -49,7 +49,7 @@ router.post('/teacher/login', function(req, res) {
 router.post('/teacher/searchBySubject', function(req, res) {
     var subject = req.body.subject;
 
-    TeacherModel.findOne({ subject: subject }, function(err, teacher) {
+    TeacherModel.find({ subject: subject }, function(err, teacher) {
         if (err) {
             console.log(err);
             return res.status(500).send();
