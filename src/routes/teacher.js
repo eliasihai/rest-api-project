@@ -46,6 +46,29 @@ router.post('/teacher/login', function(req, res) {
     })
 })
 
+router.post('/teacher/searchBySubject', function(req, res) {
+    var subject = req.body.subject;
+
+    StudentModel.findOne({ subject: subject }, function(err, teacher) {
+        if (err) {
+            console.log(err);
+            return res.status(500).send();
+        }
+        if (!teacher) {
+            res.json({
+                status: 'error'
+            })
+            return res.status(404).send();
+        } else {
+            res.json({
+                status: 'ok',
+                data: teacher
+            })
+            res.status(200).send();
+        }
+    })
+})
+
 // Register a teacher
 router.post('/teacher/register', (req, res) => {
     const teacher = new TeacherModel({
