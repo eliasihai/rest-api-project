@@ -163,7 +163,7 @@ router.get('/teacher/:teacherId', async(req, res) => {
 });
 
 // Specific teacher
-router.get('/teacher/:subject', async(req, res) => {
+router.get('/teacher/:teachersubject', async(req, res) => {
     try {
         const teacher = await TeacherModel.findAll(req.params.subject);
         res.json(teacher);
