@@ -113,19 +113,6 @@ router.post('/teacher/register1', async(req, res) => {
     }
 })
 
-// Get teachers by subject
-router.get('/teacher/:subject', async(req, res) => {
-    try {
-        const teachers = await TeacherModel.find(req.params.subject);
-        res.json({
-            status: 'ok',
-            data: teacher
-        })
-    } catch (err) {
-        res.json({ message: err })
-    }
-});
-
 router.get('/teacher/getBySubject', function(req, res) {
     var subject = req.body.subject;
 
