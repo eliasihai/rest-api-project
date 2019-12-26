@@ -113,11 +113,11 @@ router.post('/teacher/register1', async(req, res) => {
     }
 })
 
-router.get('/teacher/:subject', function(req, res) {
+router.get('/teacher/:subject', async(req, res) => {
     var subject = req.body.subject;
 
     try {
-        const teacher = await TeacherModel.find(subject: subject);
+        const teacher = await TeacherModel.find(subject);
 
         res.json({
             status: 'ok',
