@@ -113,7 +113,7 @@ router.post('/teacher/register1', async(req, res) => {
     }
 })
 
-router.get('/teacher/subj', function(req, res) {
+router.get('/teacher/getBySubject', function(req, res) {
     var subject = req.body.subject;
 
     TeacherModel.find({ subject: subject }, function(err, teacher) {
