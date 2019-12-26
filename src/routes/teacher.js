@@ -113,19 +113,27 @@ router.post('/teacher/register1', async(req, res) => {
     }
 })
 
-router.get('/teacher/:subject', async(req, res) => {
+router.get('/teacher/:subject123', function(req, res) {
     var subject = req.body.subject;
 
-    try {
-        const teacher = await TeacherModel.findAll(subject);
-
-        res.json({
-            status: 'ok',
-            data: teacher
-        })
-    } catch (err) {
-        res.json({ message: err })
-    }
+    TeacherModel.find({ subject: subject }, function(err, teacher) {
+        if (err) {
+            console.log(err);
+            return res.status(500).send();
+        }
+        if (!teacher) {
+            res.json({
+                status: 'error - teacher not found'
+            })
+            return res.status(404).send();
+        } else {
+            res.json({
+                status: 'ok',
+                data: teacher
+            })
+            res.status(200).send();
+        }
+    })
 });
 
 
@@ -148,6 +156,16 @@ router.get('/teacher/AllTeachers', async(req, res) => {
 router.get('/teacher/:teacherId', async(req, res) => {
     try {
         const teacher = await TeacherModel.findById(req.params.teacherId);
+        res.json(teacher);
+    } catch (err) {
+        res.json({ message: eerr })
+    }
+});
+
+// Specific teacher
+router.get('/teacher/:subject', async(req, res) => {
+    try {
+        const teacher = await TeacherModel.find(req.params.subject);
         res.json(teacher);
     } catch (err) {
         res.json({ message: eerr })
