@@ -151,17 +151,17 @@ router.get('/teacher/AllTeachers', async(req, res) => {
         res.json({ message: err })
     }
 });
-/*
-    // Specific teacher
-    router.get('/teacher/:teacherId', async(req, res) => {
-        try {
-            const teacher = await TeacherModel.findById(req.params.teacherId);
-            res.json(teacher);
-        } catch (err) {
-            res.json({ message: eerr })
-        }
-    });
 
+// Specific teacher
+router.get('/teacher/:subject', async(req, res) => {
+    try {
+        const teacher = await TeacherModel.findOne(req.params.subject);
+        res.json(teacher);
+    } catch (err) {
+        res.json({ message: eerr })
+    }
+});
+/*
     // Delete teacher
     router.delete('/teacher/:teacherId', async(req, res) => {
         try {
