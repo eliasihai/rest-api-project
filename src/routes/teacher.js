@@ -172,7 +172,7 @@ router.get('/teacher/subj', async(req, res) => {
     }
 });*/
 router.get('/teacher/:subject', (req, res) => {
-    const teacher = TeacherModel.find(sub => sub.subject === req.params.subject);
+    const teacher = TeacherModel.find(subject => subject.subject === this.toString(req.params.subject));
     if (!teacher) {
         res.status(404).send('The teacher with the gived subject was not found')
     }
