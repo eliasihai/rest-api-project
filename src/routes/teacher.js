@@ -153,9 +153,9 @@ router.get('/teacher/AllTeachers', async(req, res) => {
 });
 
 // Specific teacher
-router.get('/teacher/:subject', async(req, res) => {
+router.get('/teacher/:teacherId', async(req, res) => {
     try {
-        const teacher = await TeacherModel.find(req.params.subject);
+        const teacher = await TeacherModel.findById(req.params.teacherId);
         res.json(teacher);
     } catch (err) {
         res.json({ message: eerr })
