@@ -46,7 +46,7 @@ router.post('/teacher/login', function(req, res) {
     })
 })
 
-router.post('/teacher/searchBySubject', function(req, res) {
+router.post('/teacher/searchBySubj', function(req, res) {
     var subject = req.body.subject;
 
     TeacherModel.find({ subject: subject }, function(err, teacher) {
