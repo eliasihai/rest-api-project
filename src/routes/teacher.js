@@ -117,7 +117,7 @@ router.get('/teacher/:subject', async(req, res) => {
     var subject = req.body.subject;
 
     try {
-        const teacher = await TeacherModel.find(subject);
+        const teacher = await TeacherModel.findAll(subject);
 
         res.json({
             status: 'ok',
