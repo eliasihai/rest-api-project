@@ -163,13 +163,20 @@ router.get('/teacher/:teacherId', async(req, res) => {
 });
 
 // Specific teacher
-router.get('/teacher/:teachersubject', async(req, res) => {
+router.get('/teacher/subj', async(req, res) => {
     try {
         const teacher = await TeacherModel.findAll(req.params.subject);
         res.json(teacher);
     } catch (err) {
         res.json({ message: eerr })
     }
+});
+router.get('/teacher/:subject', (req, res) => {
+    const teacher = TeacherModel.find(sub => sub.subject === req.params.subject);
+    if (!teacher) {
+        res.status(404).send('The teacher with the gived subject was not found')
+    }
+    res.send(teacher)
 });
 /*
     // Delete teacher
