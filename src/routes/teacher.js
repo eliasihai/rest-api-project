@@ -113,28 +113,17 @@ router.post('/teacher/register1', async(req, res) => {
     }
 })
 
-// listview 
-router.get('/teacher/listview', function(req, res) {
-    var subject = req.body.subject;
-
-    TeacherModel.find({ subject: subject }, function(err, teacher) {
-        if (err) {
-            console.log(err);
-            return res.status(500).send();
-        }
-        if (!teacher) {
-            res.json({
-                status: 'error - teacher not found'
-            })
-            return res.status(404).send();
-        } else {
-            res.json({
-                status: 'ok',
-                data: teacher
-            })
-            res.status(200).send();
-        }
-    })
+// Get teachers by subject
+router.get('/teacher/:subject', async(req, res) => {
+    try {
+        const teachers = await TeacherModel.find(req.params.subject);
+        res.json({
+            status: 'ok',
+            data: teacher
+        })
+    } catch (err) {
+        res.json({ message: err })
+    }
 });
 
 router.get('/teacher/getBySubject', function(req, res) {
@@ -159,6 +148,8 @@ router.get('/teacher/getBySubject', function(req, res) {
         }
     })
 });
+
+
 
 // Gets back all the teachers by subject
 router.get('/teacher/AllTeachers', async(req, res) => {
