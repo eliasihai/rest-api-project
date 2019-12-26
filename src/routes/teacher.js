@@ -116,7 +116,7 @@ router.post('/teacher/register1', async(req, res) => {
 router.get('/teacher/:subject', function(req, res) {
     var subject = req.body.subject;
 
-    TeacherModel.find({ subject: subject }, function(err, teacher) {
+    TeacherModel.findOne({ subject: subject }, function(err, teacher) {
         if (err) {
             console.log(err);
             return res.status(500).send();
