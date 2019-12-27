@@ -5,6 +5,7 @@ let customerRoute = require('./routes/customer')
 let studentRoute = require('./routes/students')
 let lectureRoute = require('./routes/lecture')
 let teacherRoute = require('./routes/teacher')
+let loginRoute = require('./routes/loginUser')
 let path = require('path')
 let bodyParser = require('body-parser')
 let cors = require('cors')
@@ -24,6 +25,7 @@ app.use(customerRoute)
 app.use(studentRoute)
 app.use(lectureRoute)
 app.use(teacherRoute)
+app.use(loginRoute)
 app.use(express.static('public'));
 
 // Handler for 404 - Resource Not Found

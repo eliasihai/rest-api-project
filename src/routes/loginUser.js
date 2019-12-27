@@ -13,7 +13,8 @@ router.post('/login', function(req, res) {
     var password = req.body.password;
     var type = req.body.type;
 
-    if (type == 'teacher')
+    if (type == 'teacher') {
+        console.warn('teacher');
         TeacherModel.findOne({ email: email, password: password }, function(err, teacher) {
             if (err) {
                 console.log(err);
@@ -32,7 +33,8 @@ router.post('/login', function(req, res) {
                 res.status(200).send();
             }
         })
-    else
+    } else {
+        console.warn('student');
         StudentModel.findOne({ email: email, password: password }, function(err, student) {
             if (err) {
                 console.log(err);
@@ -51,4 +53,7 @@ router.post('/login', function(req, res) {
                 res.status(200).send();
             }
         })
-})
+    }
+});
+
+module.exports = router
