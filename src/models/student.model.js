@@ -29,6 +29,11 @@ let StudentSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    type: {
+        type: String,
+        required: true,
+        unique: false
+    }
     /*date_of_birth: {
         type: Date,
         unique: false
