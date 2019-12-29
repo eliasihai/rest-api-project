@@ -9,18 +9,22 @@ let LectureSchema = new mongoose.Schema({
     },*/
     start: {
         type: String,
+        required: true,
         unique: false
     },
     end: {
         type: String,
+        required: true,
         unique: false
     },
     title: {
         type: String,
+        required: true,
         unique: false
     },
     fullName: {
         type: String,
+        required: true,
         unique: false
     }
 
