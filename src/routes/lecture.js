@@ -10,7 +10,7 @@ mongoose.connect(
 );
 
 // Gets back all the lectures
-router.get('/lecture', async(req, res) => {
+router.get('/lecture/getAll', async(req, res) => {
     try {
         const lecture = await LectureModel.find();
 
@@ -22,7 +22,7 @@ router.get('/lecture', async(req, res) => {
 
 // Create a new lecture
 // POST localhost:3000/lecture
-router.post('/lecture', async(req, res) => {
+router.post('/lecture/Insert', async(req, res) => {
 
     const lecture = new LectureModel({
         date: req.body.date,
@@ -36,7 +36,7 @@ router.post('/lecture', async(req, res) => {
         res.json({ message: err });
     }
 });
-
+/*
 // Specific lecture
 router.get('/lecture/:lectureId', async(req, res) => {
     try {
@@ -55,6 +55,6 @@ router.delete('/lecture/:lectureId', async(req, res) => {
     } catch (err) {
         res.json({ message: err });
     }
-});
+});*/
 
 module.exports = router
