@@ -14,7 +14,10 @@ router.get('/lecture/getAll', async(req, res) => {
     try {
         const lecture = await LectureModel.find();
 
-        res.json(lecture)
+        res.json({
+            status: 'ok',
+            data: lecture
+        })
     } catch (err) {
         res.json({ message: err })
     }
