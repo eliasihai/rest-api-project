@@ -37,7 +37,10 @@ router.post('/lecture/Insert', async(req, res) => {
     });
     try {
         const savedLecture = await lecture.save();
-        res.json(savedLecture);
+        res.json({
+            status: 'ok',
+            data: savedLecture
+        });
     } catch (err) {
         res.json({ message: err });
     }
