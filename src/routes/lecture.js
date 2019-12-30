@@ -29,7 +29,10 @@ router.post('/lecture/Insert', async(req, res) => {
 
     const lecture = new LectureModel({
         date: req.body.date,
-        hour: req.body.hour,
+        start: req.body.start,
+        end: req.body.end,
+        title: req.body.title,
+        fullName: req.body.fullName,
 
     });
     try {
