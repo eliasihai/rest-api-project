@@ -9,12 +9,12 @@ let LectureSchema = new mongoose.Schema({
     },
     start: {
         type: String,
-        required: true,
+        required: false,
         unique: false
     },
     end: {
         type: String,
-        required: true,
+        required: false,
         unique: false
     },
     title: {
