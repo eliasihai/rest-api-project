@@ -36,7 +36,7 @@ let TeacherSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        //required: false,
+        required: true,
         unique: false
     }
 
