@@ -66,6 +66,7 @@ router.post('/student/register', (req, res) => {
         lastname: req.body.lastname,
         password: req.body.password,
         email: req.body.email,
+        type: req.body.type
     });
 
     student.save()
