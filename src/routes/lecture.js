@@ -28,6 +28,8 @@ router.get('/lecture/getAll', async(req, res) => {
 router.post('/lecture/Insert', async(req, res) => {
 
     const lecture = new LectureModel({
+        teacherID: req.body.teacherID,
+        studentID: req.body.studentID,
         date: req.body.date,
         start: req.body.start,
         end: req.body.end,
