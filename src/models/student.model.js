@@ -31,7 +31,7 @@ let StudentSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        required: true,
+        required: false,
         unique: false
     }
 })
