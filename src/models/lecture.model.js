@@ -3,6 +3,14 @@ require('dotenv/config');
 
 
 let LectureSchema = new mongoose.Schema({
+    teacherID: {
+        type: String,
+        unique: true
+    },
+    studentID: {
+        type: String,
+        unique: true
+    },
     date: {
         type: Date,
         unique: false
