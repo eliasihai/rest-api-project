@@ -47,6 +47,17 @@ router.post('/lecture/Insert', async(req, res) => {
         res.json({ message: err });
     }
 });
+
+// Delete lecture
+router.delete('/lecture/:lectureId', async(req, res) => {
+    try {
+        const removeLecture = await LectureModel.remove({ _id: req.params.lectureId });
+        res.json(removeLecture)
+    } catch (err) {
+        res.json({ message: err });
+    }
+});
+
 /*
 // Specific lecture
 router.get('/lecture/:lectureId', async(req, res) => {
@@ -57,15 +68,6 @@ router.get('/lecture/:lectureId', async(req, res) => {
         res.json({ message: err })
     }
 });
-
-// Delete lecture
-router.delete('/lecture/:lectureId', async(req, res) => {
-    try {
-        const removeLecture = await LectureModel.remove({ _id: req.params.lectureId });
-        res.json(removeLecture)
-    } catch (err) {
-        res.json({ message: err });
-    }
-});*/
+*/
 
 module.exports = router
