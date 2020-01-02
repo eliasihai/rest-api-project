@@ -13,6 +13,16 @@ let LectureSchema = new mongoose.Schema({
         required: false,
         unique: false
     },
+    teacherName: {
+        type: String,
+        required: true,
+        unique: false
+    },
+    studentName: {
+        type: String,
+        required: true,
+        unique: false
+    },
     date: {
         type: Date,
         unique: false
@@ -32,12 +42,6 @@ let LectureSchema = new mongoose.Schema({
         required: true,
         unique: false
     },
-    fullName: {
-        type: String,
-        required: true,
-        unique: false
-    }
-
 })
 
 const Lecture = module.exports = mongoose.model('Lecture', LectureSchema)
