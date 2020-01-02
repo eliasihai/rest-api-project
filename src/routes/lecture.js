@@ -36,8 +36,6 @@ router.post('/lecture/Insert', async(req, res) => {
         start: req.body.start,
         end: req.body.end,
         title: req.body.title,
-        fullName: req.body.fullName,
-
     });
     try {
         const savedLecture = await lecture.save();
