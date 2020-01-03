@@ -27,7 +27,7 @@ router.get('/lecture/getAll', async(req, res) => {
 router.get('/lecture/:studentID', (req, res) => {
     try {
         //const lecture = req.params.studentID;
-        const lecture = await LectureModel.findOne(req.params.studentID);
+        const lecture = LectureModel.findOne(req.params.studentID);
         res.json({
             status: 'ok',
             data: lecture
