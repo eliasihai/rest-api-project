@@ -24,10 +24,10 @@ router.get('/lecture/getAll', async(req, res) => {
 });
 
 // Get back by student ID
-router.get('/lecture/:studentID', (req, res) => {
+router.get('/lecture/studentID', (req, res) => {
     try {
         //const lecture = req.params.studentID;
-        const lecture = LectureModel.findOne(req.params.studentID);
+        const lecture = LectureModel.find(req.params.studentID);
         res.json({
             status: 'ok',
             data: lecture
