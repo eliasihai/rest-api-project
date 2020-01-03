@@ -114,29 +114,18 @@ router.post('/teacher/register1', async(req, res) => {
     }
 })
 
-router.get('/teacher/getBySubject', function(req, res) {
-    var subject = req.body.subject;
-
-    TeacherModel.find({ subject: subject }, function(err, teacher) {
-        if (err) {
-            console.log(err);
-            return res.status(500).send();
-        }
-        if (!teacher) {
-            res.json({
-                status: 'error - teacher not found'
-            })
-            return res.status(404).send();
-        } else {
+router.get('/teacher/subject', function(req, res) {
+    try {
+        TeacherModel.find({ subject: req.params.subject }, function(err, teacher) {
             res.json({
                 status: 'ok',
                 data: teacher
             })
-            res.status(200).send();
-        }
-    })
+        });
+    } catch (err) {
+        res.json({ message: 'err: ' + err })
+    }
 });
-
 
 
 // Gets back all the teachers by subject
@@ -162,23 +151,8 @@ router.get('/teacher/:teacherId', async(req, res) => {
         res.json({ message: eerr })
     }
 });
-/*
-// Specific teacher
-router.get('/teacher/subj', async(req, res) => {
-    try {
-        const teacher = await TeacherModel.findAll(req.params.subject);
-        res.json(teacher);
-    } catch (err) {
-        res.json({ message: eerr })
-    }
-});*/
-router.get('/teacher/:subject', (req, res) => {
-    const teacher = TeacherModel.find(s => s.subject === toString(req.params.subject));
-    if (!teacher) {
-        res.status(404).send('The teacher with the gived subject was not found')
-    }
-    res.send(teacher)
-});
+
+
 /*
     // Delete teacher
     router.delete('/teacher/:teacherId', async(req, res) => {
