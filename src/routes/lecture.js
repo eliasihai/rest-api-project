@@ -29,7 +29,7 @@ router.get('/lecture/:studentID', (req, res) => {
         const lecture = req.params.studentID;
         res.json({
             status: 'ok',
-            data: lecture
+            data: LectureModel.lecture
         })
     } catch (err) {
         res.json({ message: 'err: ' + eerr })
