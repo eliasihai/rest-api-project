@@ -26,10 +26,11 @@ router.get('/lecture/getAll', async(req, res) => {
 // Get back by student ID
 router.get('/lecture/:studentID', (req, res) => {
     try {
-        const lecture = req.params.studentID;
+        //const lecture = req.params.studentID;
+        const lecture = await LectureModel.findOne(req.params.studentID);
         res.json({
             status: 'ok',
-            data: LectureModel.lecture
+            data: lecture
         })
     } catch (err) {
         res.json({ message: 'err: ' + eerr })
