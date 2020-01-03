@@ -25,15 +25,8 @@ router.get('/lecture/getAll', async(req, res) => {
 
 // Get back by student ID
 router.get('/lecture/:studentID', (req, res) => {
-    try {
-        const lecture = LectureModel.find(req.params.studentID);
-        res.json({
-            status: 'ok',
-            data: lecture
-        })
-    } catch (err) {
-        res.json({ message: eerr })
-    }
+    res.send('You requested to see a studentID with the id of ' + req.params.studentID)
+
 });
 
 // Create a new lecture
