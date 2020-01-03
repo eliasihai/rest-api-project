@@ -23,6 +23,15 @@ router.get('/lecture/getAll', async(req, res) => {
     }
 });
 
+// Get back by student ID
+router.get('/lecture/:studentID', (req, res) => {
+    const teacher = TeacherModel.find(s => s.studentID === toString(req.params.studentID));
+    if (!lecture) {
+        res.status(404).send('The lecture with the gived studentID was not found')
+    }
+    res.send(lecture)
+});
+
 // Create a new lecture
 // POST localhost:3000/lecture
 router.post('/lecture/Insert', async(req, res) => {
